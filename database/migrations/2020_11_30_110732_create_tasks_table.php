@@ -10,10 +10,13 @@ class CreateTasksTable extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
+            // $table->bigInteger('user_id');
+            // $table->foreign('user_id')->references('users')->on('id');
+            $table->string('name');
             $table->string('description');
             $table->timestamps();
             $table->softDeletes();
-            $table->foreignId('user_id');
+            // $table->foreignId('user_id')->nullable();
         });
     }
 
