@@ -50,7 +50,7 @@ class TasksController extends Controller
         }
 
         abort_if(Gate::denies('task_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
+        
         return view('tasks.edit', compact('task'));
     }
 
