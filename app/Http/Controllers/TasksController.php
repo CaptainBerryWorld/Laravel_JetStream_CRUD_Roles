@@ -44,11 +44,6 @@ class TasksController extends Controller
 
     public function edit(Task $task)
     {
-
-        if ($task->user_id != auth()->id()){
-            abort(code:403);
-        }
-
         abort_if(Gate::denies('task_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         
         return view('tasks.edit', compact('task'));
@@ -63,10 +58,6 @@ class TasksController extends Controller
 
     public function destroy(Task $task)
     {
-        if ($task->user_id != auth()->id()){
-            abort(code:403);
-        }
-    
         abort_if(Gate::denies('task_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $task->delete();
